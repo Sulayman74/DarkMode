@@ -1,0 +1,144 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: whitesmoke;
+}
+
+h1 {
+  font-size: 15px;
+  color: black;
+  max-width: 60%;
+  position: inherit;
+  z-index: 2;
+  transition: all 0.5s linear;
+}
+.FxDarkMode {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+  /* background-color: violet; */
+  position: relative;
+}
+p {
+  color: black;
+  font-size: 40px;
+  text-align: center;
+  position: inherit;
+  z-index: 1;
+  transition: all 0.5s linear;
+}
+
+label {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  position: relative;
+  /* background-color: green; */
+  overflow: hidden;
+}
+
+label .SunMoon {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: rgb(220, 180, 22);
+  border: 20px rgb(47, 88, 178) solid;
+  position: relative;
+  /* transition: all 0.05s linear; */
+  overflow: hidden;
+}
+
+label .SunMoon:before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 5px;
+  width: 30px;
+  border-radius: 10px;
+  background-color: rgb(243, 214, 214);
+  animation: Cloud 2s linear infinite;
+  transform: translate(-100px, 60px);
+}
+@keyframes Cloud {
+  from {
+    transform: translate(100px, 68px);
+  }
+
+  to {
+    transform: translate(-100px, 55px);
+  }
+}
+label .SunMoon:after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: rgb(0, 0, 0);
+  transition: all linear 0.5s 0.05s;
+  transform: translate(-50px, -100px);
+  overflow: hidden;
+}
+
+.Cloud1,
+.Cloud2 {
+  position: absolute;
+  height: 5px;
+  width: 30px;
+  border-radius: 10px;
+  background-color: rgb(243, 214, 214);
+}
+
+.Cloud1 {
+  top: 15px;
+  left: 100px;
+  animation: infinite 3.5s ease Clouds;
+}
+
+.Cloud2 {
+  top: 60px;
+  left: 100px;
+  animation: infinite 3.5s linear Clouds;
+}
+
+@keyframes Clouds {
+  to {
+    top: 50px;
+    left: 10px;
+  }
+}
+
+#Sun:checked ~ p,
+#Sun:checked ~ h1 {
+  color: whitesmoke;
+}
+#Sun:checked ~ label .SunMoon:after {
+  transform: translate(-25px, -25px);
+}
+
+#Sun:checked ~ label .SunMoon {
+  border: 20px solid black;
+}
+
+#Sun {
+  display: none;
+}
+
+.DarkScreen {
+  position: absolute;
+  z-index: -3;
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  transform: translate(-100%, 100vh);
+  transition: all 0.5s linear;
+  border-radius: 20px;
+}
+
+#Sun:checked ~ .DarkScreen {
+  transform: translate(0, 0);
+  border-radius: 0px;
+}
